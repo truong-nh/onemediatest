@@ -2,34 +2,60 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Project/Maven2/JavaApp/src/main/java/${packagePath}/${mainClassName}.java to edit this template
  */
-
 package com.mycompany.onemedia;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  *
  * @author Admin
  */
-
-
 public class OneMedia {
 
+    public static void select() {
+        System.out.println("Danh sach cac chuc nang");
+        System.out.println("select 0: Ket thuc ");
+        System.out.println("select 1: Tim kiem san pham");
+        System.out.println("select 2: Them san pham");
+        System.out.println("select 3: Chinh sua san pham");
+        System.out.println("select 4: ");
+    }
+
     public static void main(String[] args) {
-        Book b= new Book("Kim Dong", "Nguyen Hong Truong", "Truyen tranh", "BBVNR","Bay vien ngoc rong", 30000, 50000, 10, "kho");
-        Book c= new Book("Bach Khoa", "Trinh Thanh Trung", "Lap trinh", "BLTHDT","Lap trinh huong doi tuong", 100000, 150000, 5, "cua hang");
+        Book b = new Book("Kim Dong", "Nguyen Hong Truong", "Truyen tranh", "BBVNR", "Bay vien ngoc rong", 30000, 50000, 10, "kho");
+        Book c = new Book("Bach Khoa", "Trinh Thanh Trung", "Lap trinh", "BLTHDT", "Lap trinh huong doi tuong", 100000, 150000, 5, "cua hang");
 
-//        Book.searchProduct"BLTHDT");
-//        Book.searchProduct("1111");
-          Book.managerEditProduct("Kim Dong", "Nguyen Hong Truong", "truyen tranh", "BBVNR", "Bay vien ngoc rong", 30000, 60000, 20, "cua hang");
-//          Book.staffEditProduct("BBVNR",40 );
-        for(Book i: Book.getListBook() ){
-            i.displayManager();
-            i.displayStaff();
-        }
-        
+        Scanner sc = new Scanner(System.in);
+        int select = 100;
+        do {
+            select();
+
+            System.out.println("-------------------------------------");
+            System.out.println("Chon chuc nang");
+            
+           
+                select = sc.nextInt();
+
+            switch (select) {
+                case 1:
+                    BookService.searchProduct();
+                    break;
+                case 2:
+                    BookService.addProduct();
+                    break;
+                case 3:
+                    BookService.managerEditProduct();
+                    break;
+            }
+            System.out.println("-------------------------------------");
+             
+            
+
+        } while (select != 0);
 
 
-       }
+
+    }
 }
