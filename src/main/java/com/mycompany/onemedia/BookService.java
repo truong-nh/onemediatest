@@ -34,33 +34,40 @@ public class BookService {
         String code = sc.next();
         try {
             if (Book.searchProduct(code) == null) {
-                System.out.println("publisher: ");
+                System.out.print("publisher: ");
                 String publisher = sc.next();
 
-                System.out.println("author : ");
+                System.out.print("author : ");
                 String author = sc.next();
 
-                System.out.println("category : ");
+                System.out.print("category : ");
                 String category = sc.next();
 
-                System.out.println("name : ");
+                System.out.print("name : ");
                 String name = sc.next();
 
-                System.out.println("purchasePrice : ");
+                System.out.print("purchasePrice : ");
                 int purcharPrice = sc.nextInt();
 
-                System.out.println("salePrice : ");
+                System.out.print("salePrice : ");
                 int salePrice = sc.nextInt();
 
-                System.out.println("remaining : ");
+                System.out.print("remaining : ");
                 int remaining = sc.nextInt();
 
-                System.out.println("productPlacement : ");
+                System.out.print("productPlacement : ");
                 String productPlacement = sc.next();
 
                 Book b = new Book(publisher, author, category, code, name, purcharPrice, salePrice, remaining, productPlacement);
             } else {
-                System.out.println("San pham da ton tai");
+                try {
+                    System.out.println("Nhap so luong san pham muon them: ");
+                    int number = sc.nextInt();
+                    Book.searchProduct(code).setRemaining(number + Book.searchProduct(code).getRemaining());
+                } catch (Exception e) {
+                    System.out.println("Dien thong tin khong hop le");
+                }
+
             }
 
         } catch (Exception e) {
@@ -74,28 +81,36 @@ public class BookService {
         String code = sc.next();
         try {
             if (Book.searchProduct(code) != null) {
-                System.out.println("publisher: ");
+                System.out.println("publisher: " +Book.searchProduct(code).getPublisher() );
+                System.out.print("publisher: ");
                 String publisher = sc.next();
-
-                System.out.println("author : ");
+                
+                System.out.println("author: " +Book.searchProduct(code).getAuthor() );
+                System.out.print("author : ");
                 String author = sc.next();
-
-                System.out.println("category : ");
+                
+                System.out.println("category: " +Book.searchProduct(code).getCategory() );
+                System.out.print("category : ");
                 String category = sc.next();
-
-                System.out.println("name : ");
+                
+                System.out.println("name: " +Book.searchProduct(code).getName() );
+                System.out.print("name : ");
                 String name = sc.next();
-
-                System.out.println("purchasePrice : ");
+                
+                System.out.println("purchasePrice: " +Book.searchProduct(code).getPurchasePrice() );
+                System.out.print("purchasePrice : ");
                 int purcharPrice = sc.nextInt();
-
-                System.out.println("salePrice : ");
+                
+                System.out.println("salePrice " +Book.searchProduct(code).getSalePrice() );
+                System.out.print("salePrice : ");
                 int salePrice = sc.nextInt();
-
-                System.out.println("remaining : ");
+                
+                System.out.println("remaining: " +Book.searchProduct(code).getRemaining() );
+                System.out.print("remaining : ");
                 int remaining = sc.nextInt();
-
-                System.out.println("productPlacement : ");
+                
+                System.out.println("productPlacement: " +Book.searchProduct(code).getProductPlacement() );
+                System.out.print("productPlacement : ");
                 String productPlacement = sc.next();
 
                 Book.managerEditProduct(publisher, author, category, code, name, purcharPrice, salePrice, remaining, productPlacement);
@@ -108,6 +123,5 @@ public class BookService {
             System.out.println("Dien thong tin khong hop le");
         }
     }
-    
-    
+
 }

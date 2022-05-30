@@ -5,6 +5,7 @@
 package com.mycompany.onemedia;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,25 +19,31 @@ public class OneMedia {
         System.out.println("Danh sach cac chuc nang");
         System.out.println("select 0: Ket thuc ");
         System.out.println("select 1: Tim kiem san pham");
-        System.out.println("select 2: Them san pham");
+        System.out.println("select 2: Nhap vao kho san pham");
         System.out.println("select 3: Chinh sua san pham");
-        System.out.println("select 4: ");
+
     }
 
     public static void main(String[] args) {
         Book b = new Book("Kim Dong", "Nguyen Hong Truong", "Truyen tranh", "BBVNR", "Bay vien ngoc rong", 30000, 50000, 10, "kho");
         Book c = new Book("Bach Khoa", "Trinh Thanh Trung", "Lap trinh", "BLTHDT", "Lap trinh huong doi tuong", 100000, 150000, 5, "cua hang");
 
-        Scanner sc = new Scanner(System.in);
         int select = 100;
         do {
-            select();
 
-            System.out.println("-------------------------------------");
-            System.out.println("Chon chuc nang");
-            
-           
+            Scanner sc = new Scanner(System.in);
+
+            try {
+                select();
+                System.out.println("-------------------------------------");
+                System.out.print("Chon chuc nang:");
                 select = sc.nextInt();
+
+            } catch (InputMismatchException ex) {
+                System.out.println("Nhap gia tri ko hop le");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
             switch (select) {
                 case 1:
@@ -50,12 +57,8 @@ public class OneMedia {
                     break;
             }
             System.out.println("-------------------------------------");
-             
-            
 
         } while (select != 0);
-
-
 
     }
 }
