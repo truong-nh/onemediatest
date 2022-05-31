@@ -25,24 +25,26 @@ public class OneMedia {
     }
 
     public static void main(String[] args) {
-        Book b = new Book("Kim Dong", "Nguyen Hong Truong", "Truyen tranh", "BBVNR", "Bay vien ngoc rong", 30000, 50000, 10, "kho");
+        Book b = new Book("Kim Dong", "Nguyen Hong Truong", "Truyen tranh", "BBVNR", "Bay vien ngoc rong", 30000, 50000, 10, "nha kho");
         Book c = new Book("Bach Khoa", "Trinh Thanh Trung", "Lap trinh", "BLTHDT", "Lap trinh huong doi tuong", 100000, 150000, 5, "cua hang");
 
-        int select = 100;
+        int select=100 ;
         do {
 
             Scanner sc = new Scanner(System.in);
-
+            select();
             try {
-                select();
+                
                 System.out.println("-------------------------------------");
                 System.out.print("Chon chuc nang:");
                 select = sc.nextInt();
 
             } catch (InputMismatchException ex) {
                 System.out.println("Nhap gia tri ko hop le");
+                select=100;
             } catch (Exception e) {
                 e.printStackTrace();
+                select=100;
             }
 
             switch (select) {
