@@ -4,6 +4,7 @@
  */
 package com.mycompany.onemedia;
 
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -17,9 +18,8 @@ public class BookService {
 
     public static void searchProduct() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Nhap ma san pham: ");
+        System.out.print("Nhap ma san pham: ");
         String code = sc.next();
-        System.out.println(code);
         try {
             Book.searchProduct(code).displayManager();
         } catch (Exception e) {
@@ -30,7 +30,7 @@ public class BookService {
 
     public static void addProduct() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Nhap ma san pham muon them: ");
+        System.out.print("Nhap ma san pham muon them: ");
         String code = sc.next();
         try {
             if (Book.searchProduct(code) == null) {
@@ -60,10 +60,13 @@ public class BookService {
 
                 Book b = new Book(publisher, author, category, code, name, purcharPrice, salePrice, remaining, productPlacement);
             } else {
+                    System.out.println("------San pham da ton tai------");
+                    Book.searchProduct(code).displayManager();
                 try {
-                    System.out.println("Nhap so luong san pham muon them: ");
+                    System.out.print("Nhap so luong san pham muon them: ");
                     int number = sc.nextInt();
                     Book.searchProduct(code).setRemaining(number + Book.searchProduct(code).getRemaining());
+                    Book.searchProduct(code).setUpdateDate(new Date());
                 } catch (Exception e) {
                     System.out.println("Dien thong tin khong hop le");
                 }
@@ -111,10 +114,11 @@ public class BookService {
                 
                 System.out.println("productPlacement: " +Book.searchProduct(code).getProductPlacement() );
                 System.out.print("productPlacement : ");
-                String productPlacement = sc.next();
-
+                String productPlacement = sc.next();              
+                
+                Book.searchProduct(code).setUpdateDate(new Date());
                 Book.managerEditProduct(publisher, author, category, code, name, purcharPrice, salePrice, remaining, productPlacement);
-
+                     
             } else {
                 System.out.println("San pham chua ton tai");
             }

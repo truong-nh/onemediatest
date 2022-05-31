@@ -119,6 +119,7 @@ public class Product {
     }
 
     public void displayManager() {
+        System.out.println("------Thong tin san pham " +code+" --------" );
         System.out.println("ID san pham:" + id);
         System.out.println("Ma san pham:  " + code);
         System.out.println("Ten san pham:  " + name);
@@ -132,6 +133,7 @@ public class Product {
     }
 
     public void displayStaff() {
+        System.out.println("------Thong tin san pham " +code+" --------" );
         System.out.println("ID san pham: " + id);
         System.out.println("Ma san pham: " + code);
         System.out.println("Ten san pham: " + name);
